@@ -50,7 +50,7 @@ public class StatisticsController {
 
 		int totalMatches = matches.size();
 		int totalVictories = (int) matches.stream().filter(MatchDto::isVictory).count();
-		float winPercentage = totalVictories / (float) totalMatches;
+		float winPercentage = totalMatches > 0 ? totalVictories / (float) totalMatches : 0;
 		int redSideGames = (int) matches.stream().filter(matchDto -> matchDto.getTeam() == RED).count();
 		int redSideVictories = (int) matches.stream().filter(matchDto -> matchDto.getTeam() == RED && matchDto.isVictory()).count();
 		int blueSideGames = (int) matches.stream().filter(matchDto -> matchDto.getTeam() == BLUE).count();

@@ -9,7 +9,6 @@ public class PlayerStatisticsDto {
 
 	private  final Player player;
 
-
 	private final MatchWinrates winrates;
 
 	private  final List<MatchDto> matches;
