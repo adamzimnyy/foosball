@@ -41,12 +41,12 @@ public class StatisticsController {
 			.filter(match -> wasParticipating(player, match))
 			.map(match -> toMatchDto(player, match)).collect(Collectors.toList());
 
-		MatchWinrates winrates = createWinrates(matches);
+		MatchWinRates winRates = createWinRates(matches);
 
-		return new PlayerStatisticsDto(player, winrates, matches);
+		return new PlayerStatisticsDto(player, winRates, matches);
 	}
 
-	private MatchWinrates createWinrates(List<MatchDto> matches) {
+	private MatchWinRates createWinRates(List<MatchDto> matches) {
 
 		int totalMatches = matches.size();
 		int totalVictories = (int) matches.stream().filter(MatchDto::isVictory).count();
@@ -56,7 +56,7 @@ public class StatisticsController {
 		int blueSideGames = (int) matches.stream().filter(matchDto -> matchDto.getTeam() == BLUE).count();
 		int blueSideVictories = (int) matches.stream().filter(matchDto -> matchDto.getTeam() == BLUE && matchDto.isVictory()).count();
 
-		return new MatchWinrates(
+		return new MatchWinRates(
 			totalMatches,
 			totalVictories,
 			winPercentage,

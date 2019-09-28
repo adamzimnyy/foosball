@@ -1,16 +1,16 @@
 package app.interfaces;
 
-public class MatchWinrates {
+public class MatchWinRates {
 
 	private final int totalMatches;
 	private  final int totalVictories;
 	private  final float winPercent;
 	private  final int redSideGames;
-	private  final int redSizeVictories;
+	private  final int redSideVictories;
 	private  final int blueSideGames;
 	private  final int blueSideVictories;
 
-	public MatchWinrates(int totalMatches,
+	MatchWinRates(int totalMatches,
 		int totalVictories,
 		float winPercent,
 		int redSideGames,
@@ -22,7 +22,7 @@ public class MatchWinrates {
 		this.totalVictories = totalVictories;
 		this.winPercent = winPercent;
 		this.redSideGames = redSideGames;
-		this.redSizeVictories = redSizeVictories;
+		this.redSideVictories = redSizeVictories;
 		this.blueSideGames = blueSideGames;
 		this.blueSideVictories = blueSideVictories;
 	}
@@ -47,9 +47,9 @@ public class MatchWinrates {
 		return redSideGames;
 	}
 
-	public int getRedSizeVictories() {
+	public int getRedSideVictories() {
 
-		return redSizeVictories;
+		return redSideVictories;
 	}
 
 	public int getBlueSideGames() {
