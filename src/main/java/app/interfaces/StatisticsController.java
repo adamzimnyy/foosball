@@ -75,6 +75,6 @@ public class StatisticsController {
 	private MatchDto toMatchDto(Player player, Match match) {
 
 		Team team = match.getBlueTeam().contains(player) ? Team.BLUE : RED;
-		return new MatchDto(match.getDate(), team, match.getWinner() == team);
+		return new MatchDto(match.getDate(), team, match.getWinner() == team, match.getRedTeam(), match.getBlueTeam());
 	}
 }
