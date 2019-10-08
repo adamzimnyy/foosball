@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("wakeUp")
 public class WakeUpController {
 
-	@GetMapping private ResponseEntity wakeUp(){
+	@GetMapping 
+	private ResponseEntity wakeUp(){
 
 		return ResponseEntity.ok().build();
 	}

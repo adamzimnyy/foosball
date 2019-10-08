@@ -3,12 +3,15 @@ package app.interfaces;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import app.core.Player;
 import app.core.Team;
 
 
 public class MatchDto {
-
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private final LocalDateTime date;
 	private final List<Player> redTeam;
 	private final List<Player> blueTeam;
