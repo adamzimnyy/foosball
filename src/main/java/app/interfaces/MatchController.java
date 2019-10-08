@@ -55,6 +55,7 @@ public class MatchController {
 
 		return matchRepository.findAll()
 			.stream()
+			.sorted((m1,m2) -> m2.getDate().compareTo(m1.getDate()))
 			.map(matchDtoFactory::create)
 			.collect(toList());
 	}
