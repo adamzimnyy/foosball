@@ -7,39 +7,24 @@ import app.core.Player;
 import app.core.Team;
 
 
-class MatchDto {
+public class MatchDto {
 
 	private final LocalDateTime date;
-
-	private final Team team;
-
-	private final boolean victory;
-	
 	private final List<Player> redTeam;
 	private final List<Player> blueTeam;
+	private final Team winner;
 
-	MatchDto(LocalDateTime date, Team team, boolean victory, List<Player> redTeam, List<Player> blueTeam) {
+	MatchDto(LocalDateTime date, List<Player> redTeam, List<Player> blueTeam, Team winner) {
 
 		this.date = date;
-		this.team = team;
-		this.victory = victory;
 		this.redTeam = redTeam;
 		this.blueTeam = blueTeam;
+		this.winner = winner;
 	}
 
 	public LocalDateTime getDate() {
 
 		return date;
-	}
-
-	public Team getTeam() {
-
-		return team;
-	}
-
-	public boolean isVictory() {
-
-		return victory;
 	}
 
 	public List<Player> getRedTeam() {
@@ -50,5 +35,10 @@ class MatchDto {
 	public List<Player> getBlueTeam() {
 
 		return blueTeam;
+	}
+
+	public Team getWinner() {
+
+		return winner;
 	}
 }
