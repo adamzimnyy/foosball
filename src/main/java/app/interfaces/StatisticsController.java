@@ -31,7 +31,7 @@ public class StatisticsController {
 	@GetMapping
 	public List<PlayerStatisticsDto> getAllStatistics() {
 
-		List<Match> allMatches = matchRepository.findAll();
+		List<Match> allMatches = matchRepository.findTop100ByOrderByDateDesc();
 
 		return Arrays.stream(Player.values())
 			.map(player -> createStatistics(player, allMatches))
