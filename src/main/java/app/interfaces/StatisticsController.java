@@ -31,7 +31,7 @@ public class StatisticsController {
 	@GetMapping
 	public List<PlayerStatisticsDto> getAllStatistics() {
 
-		List<Match> allMatches = matchRepository.findTop100ByOrderByDateDesc();
+		List<Match> allMatches = matchRepository.findAll();
 
 		return Arrays.stream(Player.values())
 			.map(player -> createStatistics(player, allMatches))
@@ -42,6 +42,7 @@ public class StatisticsController {
 
 		List<PlayerMatchDto> matches = allMatches.stream()
 			.filter(match -> wasParticipating(player, match))
+			.limit(100)
 			.map(match -> toMatchDto(player, match)).collect(Collectors.toList());
 
 		MatchWinRates winRates = createWinRates(matches);
