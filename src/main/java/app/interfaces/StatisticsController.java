@@ -4,6 +4,7 @@ import static app.core.Team.BLUE;
 import static app.core.Team.RED;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,7 @@ public class StatisticsController {
 	private PlayerStatisticsDto createStatistics(Player player, List<Match> allMatches) {
 
 		List<PlayerMatchDto> matches = allMatches.stream()
+			.sorted(Comparator.comparing(Match::getDate).reversed())
 			.filter(match -> wasParticipating(player, match))
 			.limit(100)
 			.map(match -> toMatchDto(player, match)).collect(Collectors.toList());
