@@ -44,7 +44,6 @@ public class StatisticsController {
 		List<PlayerMatchDto> matches = allMatches.stream()
 			.sorted(Comparator.comparing(Match::getDate).reversed())
 			.filter(match -> wasParticipating(player, match))
-			.limit(100)
 			.map(match -> toMatchDto(player, match)).collect(Collectors.toList());
 
 		MatchWinRates winRates = createWinRates(matches);
