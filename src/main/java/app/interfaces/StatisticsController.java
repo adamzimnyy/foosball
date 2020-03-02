@@ -3,6 +3,7 @@ package app.interfaces;
 import static app.core.Team.BLUE;
 import static app.core.Team.RED;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -32,7 +33,12 @@ public class StatisticsController {
 	@GetMapping
 	public List<PlayerStatisticsDto> getAllStatistics() {
 
-		List<Match> allMatches = matchRepository.findAll();
+		List<Match> allMatches = matchRepository.findAll()
+			.stream()
+			.filter(match ->
+				match.getDate().getMonth() == LocalDateTime.now().getMonth() &&
+				match.getDate().getYear() == LocalDateTime.now().getYear())
+			.collect(Collectors.toList());
 
 		return Arrays.stream(Player.values())
 			.map(player -> createStatistics(player, allMatches))
