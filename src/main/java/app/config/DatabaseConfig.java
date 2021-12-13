@@ -57,15 +57,20 @@ public class DatabaseConfig {
 		Properties additionalProperties = new Properties();
 		additionalProperties.put(
 			"hibernate.dialect",
-			Objects.requireNonNull(env.getProperty("hibernate.dialect")));
+			Objects.requireNonNull(env.getProperty("hibernate.dialect")));	
+		additionalProperties.put(
+			"sslfactory",
+			Objects.requireNonNull(env.getProperty("hibernate.sslfactory")));
 		additionalProperties.put(
 			"hibernate.show_sql",
 			Objects.requireNonNull(env.getProperty("hibernate.show_sql")));
 		additionalProperties.put(
 			"hibernate.hbm2ddl.auto",
 			Objects.requireNonNull(env.getProperty("hibernate.hbm2ddl.auto")));
-		entityManagerFactory.setJpaProperties(additionalProperties);
 
+		
+		additionalProperties.put("sslmode","verify-ca");
+		entityManagerFactory.setJpaProperties(additionalProperties);
 		return entityManagerFactory;
 	}
 
